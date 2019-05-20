@@ -1,0 +1,17 @@
+<h1>New Game</h1>
+
+<!-- display a new random grid and a form -->
+<!-- The form will be submitted (with POST) to the score action. -->
+<div class="all-letters">
+<% @letters.each do |element|%>
+  <div class="letter"> <%= element %></div>
+<%end%>
+</div>
+
+<p>What is the longest word you can find?</p>
+<form action="/score" method="POST">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :letters, @letters %>
+  <input type="text" name="question" class="box">
+  <input type="submit" value="Play!">
+</form>
